@@ -1,0 +1,62 @@
+﻿<Window x:Class="ProductCategory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductCategory"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Name="menuGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="291*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="116*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="createCategoryButton" Click="CreateCategory" Visibility="Visible" Content="Создать категорию"  Grid.Row="3" Height="22" Width="150" Margin="20,14"/>
+        <Button Name="createProductButton" Click="CreateProduct" Visibility="Collapsed" Content="Создать продукт"  Grid.Row="3" Height="22" Width="150" Margin="20,14"/>
+        <Button Name="categoriesButton" Content="Категории" Width="150" Height="22" Grid.Row="0" Click="ShowCategories"/>
+        <Button Name="productsButton" Click="ShowProducts" Visibility="Hidden" Content="Продукты" Width="150" Height="22" Grid.Row="1"/>
+        <ListView Visibility="Collapsed" Name="categoriesListView" Grid.Row="2" VerticalAlignment="Top" Height="291" ItemsSource="{Binding Categories}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя категории" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Visibility="Collapsed"  Name="productsListView" Grid.Row="2" VerticalAlignment="Top" Height="291" ItemsSource="{Binding Products}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя товара" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.RowSpan="3" Grid.Column="1" Name="categoryGrid" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="41*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="293*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Название категории" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="1" Name="categoryNameTextBox" HorizontalAlignment="Left" Height="23" Margin="27,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="303"/>
+            <Button Name="saveCategoryButton" Content="Сохранить" Grid.Row="2" Height="22" Width="150" Margin="180,45,40,225"/>
+        </Grid>
+
+        <Grid Grid.RowSpan="3" Grid.Column="1" Name="productGrid" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="41*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="293*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Название продукта" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="1" Name="productNameTextBox" HorizontalAlignment="Left" Height="23" Margin="27,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="303"/>
+            <Button Name="saveProductButton" Content="Сохранить" Grid.Row="2" Height="22" Width="150" Margin="180,45,40,225"/>
+        </Grid>
+
+    </Grid>
+</Window>
